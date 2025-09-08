@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriYield AI | Home</title>
+    <link rel="stylesheet" href="/workspace/frontend/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script defer src="/workspace/frontend/main.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="logo" href="/workspace/frontend/index.html">AgriYield AI</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/workspace/frontend/index.html" class="active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="/workspace/frontend/about.html" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="/workspace/frontend/success.html" data-i18n="nav.success">Success Stories</a></li>
+                    <li><a href="/workspace/frontend/weather.html" data-i18n="nav.weather">Weather Report</a></li>
+                    <li><a href="/workspace/frontend/get-started.html" class="cta" data-i18n="nav.getStarted">Get Started</a></li>
+                    <li><a href="/workspace/frontend/login.html" data-i18n="nav.login">Login</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <select id="languageSelect" aria-label="Language select">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="ta">தமிழ்</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <h1 data-i18n="home.title">Predict crop yields. Grow smarter.</h1>
+                <p data-i18n="home.subtitle">AI-powered insights using historical data, weather, and soil health to boost productivity by 10%+.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="/workspace/frontend/get-started.html" data-i18n="cta.getStarted">Get Started</a>
+                    <a class="btn secondary" href="/workspace/frontend/about.html" data-i18n="cta.learnMore">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="card-grid">
+                    <div class="card">🌾 <span data-i18n="home.card1">Yield Prediction</span></div>
+                    <div class="card">💧 <span data-i18n="home.card2">Smart Irrigation</span></div>
+                    <div class="card">🧪 <span data-i18n="home.card3">Soil Health</span></div>
+                    <div class="card">☀️ <span data-i18n="home.card4">Weather Alerts</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features container">
+            <h2 data-i18n="home.featuresTitle">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3 data-i18n="features.yield">Accurate Yield Forecasts</h3>
+                    <p data-i18n="features.yieldDesc">Regression and neural models trained on open datasets tailor predictions to your crop and region.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="features.irrigation">Irrigation Optimization</h3>
+                    <p data-i18n="features.irrigationDesc">Daily watering plans using evapotranspiration and rainfall forecasts reduce water usage.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="features.fertilization">Fertilization Guidance</h3>
+                    <p data-i18n="features.fertilizationDesc">Soil metrics inform N-P-K schedules to maximize yield and minimize waste.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-i18n="features.pest">Pest & Disease Alerts</h3>
+                    <p data-i18n="features.pestDesc">Weather patterns and reported outbreaks trigger early warnings and mitigations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container cta-band-inner">
+                <h3 data-i18n="home.ctaBand">Ready to boost your farm's productivity?</h3>
+                <a class="btn primary" href="/workspace/frontend/get-started.html" data-i18n="cta.startFree">Start Free</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>AgriYield AI</h4>
+                <p data-i18n="footer.tag">Data-driven farming for everyone.</p>
+            </div>
+            <div>
+                <h4 data-i18n="footer.company">Company</h4>
+                <ul>
+                    <li><a href="/workspace/frontend/about.html" data-i18n="nav.about">About Us</a></li>
+                    <li><a href="#" aria-disabled="true" data-i18n="footer.careers">Careers</a></li>
+                    <li><a href="#" aria-disabled="true" data-i18n="footer.contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 data-i18n="footer.legal">Legal</h4>
+                <ul>
+                    <li><a href="#" aria-disabled="true" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" aria-disabled="true" data-i18n="footer.terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container tiny">
+            <small>© <span id="year"></span> AgriYield AI</small>
+        </div>
+    </footer>
+</body>
+</html>
+
