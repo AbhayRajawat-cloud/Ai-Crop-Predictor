@@ -35,7 +35,7 @@ const Header = () => {
             <Sprout className="h-6 w-6" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-bold text-foreground">AgriPredict</span>
+            <span className="text-xl font-bold text-foreground">GreenByte</span>
             <span className="text-xs text-muted-foreground">AI Crop Intelligence</span>
           </div>
         </Link>
