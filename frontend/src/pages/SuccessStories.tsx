@@ -112,7 +112,7 @@ const SuccessStories = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Farmer Testimonials</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear directly from farmer who have transformed their operations with AgriPredict's AI-powered insights.
+              Hear directly from farmers who have transformed their operations with AgriPredict's AI-powered insights.
             </p>
           </div>
 
