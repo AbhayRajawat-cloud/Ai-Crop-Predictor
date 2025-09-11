@@ -25,7 +25,7 @@ const Footer = () => {
                 <Sprout className="h-6 w-6" />
               </div>
               <div>
-                <span className="text-xl font-bold">AgriPredict</span>
+                <span className="text-xl font-bold">GreenByte</span>
                 <p className="text-sm text-primary-foreground/80">AI Crop Intelligence</p>
               </div>
             </Link>
