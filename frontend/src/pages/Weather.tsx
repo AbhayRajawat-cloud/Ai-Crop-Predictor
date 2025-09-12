@@ -109,7 +109,7 @@ export default function Weather() {
                   Update Location
                 </Button>
                 <Button variant="secondary" onClick={handleDetectLocation}>
-                  📍 Use My Location
+                  Use My Location
                 </Button>
 
               </div>
