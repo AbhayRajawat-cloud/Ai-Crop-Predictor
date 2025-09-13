@@ -3,6 +3,11 @@ import { spawn } from "child_process";
 
 const router = express.Router();
 
+// Test route
+router.get("/test", (req, res) => {
+  res.json({ message: "✅ Predict route working!" });
+});
+
 router.post("/", (req, res) => {
   const inputData = req.body;  
   // Expecting: { "temperature": 25, "rainfall": 120, "soil_health": 0.8 }

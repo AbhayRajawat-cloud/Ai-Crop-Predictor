@@ -7,6 +7,11 @@ import "../config/passport.js"; // Ensure passport strategies are loaded
 
 const router = express.Router();
 
+// Test route — add this right after the router declaration
+router.get("/test", (req, res) => {
+  res.json({ message: "✅ Auth route working!" });
+});
+
 // Register
 router.post("/register", async (req, res) => {
   try {
