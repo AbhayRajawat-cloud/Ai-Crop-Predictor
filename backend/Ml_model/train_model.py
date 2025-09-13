@@ -1,10 +1,13 @@
-# backend/ML_model/train_model.py
 from crop_model import CropYieldModel
+import os
 
 if __name__ == "__main__":
-    data_path = "backend/data/crop_yield.csv"  # path to dataset
+    # Go one directory up, then into data
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_path = os.path.join(base_dir, "data", "crop_yield.csv")
+
     model = CropYieldModel()
     
     score = model.train(data_path)
     print(f"Model trained successfully! R² Score: {score:.4f}")
-    print("Trained model saved as backend/ML_model/crop_yield_model.pkl")
+    print("Trained model saved as backend/Ml_model/crop_yield_model.pkl")

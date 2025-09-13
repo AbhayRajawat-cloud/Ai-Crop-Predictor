@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Test route
 router.get("/test", (req, res) => {
-  res.json({ message: "✅ Predict route working!" });
+  res.json({ message: "Predict route working!" });
 });
 
 router.post("/", (req, res) => {
@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
   // Expecting: { "temperature": 25, "rainfall": 120, "soil_health": 0.8 }
 
   const pythonProcess = spawn("python3", [
-    "backend/ML_model/predictor.py",
+    "backend/Ml_model/predictor.py",
     JSON.stringify(inputData)
   ]);
 
