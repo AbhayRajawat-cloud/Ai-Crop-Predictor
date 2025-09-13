@@ -33,64 +33,6 @@ const GetStarted = () => {
     farmSize: "",
     experience: ""
   });
-
-  const plans = [
-    {
-      id: "starter",
-      name: "Starter",
-      price: "Free",
-      period: "",
-      description: "Perfect for small farms getting started with AI agriculture",
-      features: [
-        "Basic yield predictions",
-        "7-day weather forecast", 
-        "Monthly reports",
-        "Email support",
-        "Up to 20 hectares"
-      ],
-      popular: false,
-      cta: "Get Started"
-    },
-    {
-      id: "pro",
-      name: "Professional",
-      price: "$49",
-      period: "/month",
-      description: "Advanced features for serious farmers",
-      features: [
-        "Advanced AI predictions",
-        "14-day weather forecast",
-        "Real-time monitoring",
-        "Priority support",
-        "Up to 200 hectares",
-        "Soil health analysis",
-        "Pest control alerts",
-        "Mobile app access"
-      ],
-      popular: true,
-      cta: "Get Started"
-    },
-    {
-      id: "enterprise",
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      description: "Complete solution for large-scale operations",
-      features: [
-        "Custom AI model training",
-        "Unlimited farm size",
-        "Real-time satellite data",
-        "Dedicated support manager",
-        "API access",
-        "Multi-farm management",
-        "Custom integrations",
-        "On-site training"
-      ],
-      popular: false,
-      cta: "Contact Sales"
-    }
-  ];
-
   const steps = [
     {
       number: 1,
@@ -132,7 +74,7 @@ const GetStarted = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Get Started with AgriPredict
+              Get Started with GreenByte
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/90">
               Transform your farming operation in just 4 simple steps. 
@@ -148,7 +90,7 @@ const GetStarted = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">How It Works</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get up and running with AgriPredict in minutes, not hours.
+              Get up and running with GreenByte in minutes, not hours.
             </p>
           </div>
           
@@ -178,64 +120,6 @@ const GetStarted = () => {
           </div>
         </section>
 
-        {/* Pricing Plans */}
-        <section className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Choose Your Plan</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Flexible pricing designed to grow with your farm. Choose the plan that fits your needs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <Card 
-                key={plan.id} 
-                className={`relative shadow-medium hover:shadow-strong transition-smooth ${
-                  plan.popular ? 'ring-2 ring-primary scale-105' : ''
-                } ${selectedPlan === plan.id ? 'ring-2 ring-accent' : ''}`}
-                onClick={() => setSelectedPlan(plan.id)}
-              >
-                {plan.popular && (
-                  <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground">
-                    Most Popular
-                  </Badge>
-                )}
-                
-                <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-primary">{plan.price}</span>
-                    <span className="text-muted-foreground">{plan.period}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-2">{plan.description}</p>
-                </CardHeader>
-                
-                <CardContent>
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button 
-                    className={`w-full ${
-                      plan.popular 
-                        ? 'bg-primary hover:bg-primary-hover' 
-                        : 'bg-secondary hover:bg-secondary-hover'
-                    }`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
         {/* Registration Form */}
         <section className="mb-16">
           <div className="max-w-2xl mx-auto">
@@ -243,7 +127,7 @@ const GetStarted = () => {
               <CardHeader>
                 <CardTitle className="text-center">Tell Us About Your Farm</CardTitle>
                 <p className="text-center text-muted-foreground">
-                  Help us customize AgriPredict for your specific needs
+                  Help us customize GreenByte for your specific needs
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -274,7 +158,7 @@ const GetStarted = () => {
                     <Label htmlFor="phone">Phone Number</Label>
                     <Input 
                       id="phone"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder="+91 9876543210"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                     />
@@ -315,7 +199,7 @@ const GetStarted = () => {
                   <Label htmlFor="experience">Farming Experience & Goals</Label>
                   <Textarea 
                     id="experience"
-                    placeholder="Tell us about your farming background and what you hope to achieve with AgriPredict..."
+                    placeholder="Tell us about your farming background and what you hope to achieve with GreenByte..."
                     rows={4}
                     value={formData.experience}
                     onChange={(e) => handleInputChange('experience', e.target.value)}
@@ -331,45 +215,33 @@ const GetStarted = () => {
         </section>
 
         {/* Support Section */}
-        <section className="mb-16">
-          <Card className="shadow-medium bg-muted/30">
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div>
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <HeadphonesIcon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">24/7 Support</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Get help whenever you need it from our agricultural experts
-                  </p>
-                </div>
-                <div>
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Smartphone className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Mobile App</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Access your farm data anywhere with our iOS and Android apps
-                  </p>
-                  <Button variant="ghost" size="sm" className="mt-2">
-                    <Download className="h-4 w-4 mr-1" />
-                    Download
-                  </Button>
-                </div>
-                <div>
-                  <div className="mx-auto mb-4 h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Data Security</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Your farm data is encrypted and secure with industry-leading protection
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+ <section className="mb-16">
+  <Card className="shadow-medium bg-muted/30">
+    <CardContent className="p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 place-items-center text-center">
+        <div>
+          <div className="mx-auto mb-4 h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <HeadphonesIcon className="h-6 w-6 text-primary" />
+          </div>
+          <h3 className="font-semibold mb-2">24/7 Support</h3>
+          <p className="text-sm text-muted-foreground">
+            Get help whenever you need it from our agricultural experts
+          </p>
+        </div>
+        <div>
+          <div className="mx-auto mb-4 h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+            <Shield className="h-6 w-6 text-primary" />
+          </div>
+          <h3 className="font-semibold mb-2">Data Security</h3>
+          <p className="text-sm text-muted-foreground">
+            Your farm data is encrypted and secure with industry-leading protection
+          </p>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+</section>
+
 
         {/* Testimonial */}
         <section>
@@ -381,11 +253,11 @@ const GetStarted = () => {
                 ))}
               </div>
               <blockquote className="text-xl italic mb-4">
-                "AgriPredict helped me increase my corn yield by 18% in just the first season. 
+                "GreenByte helped me increase my Sugarcane by 18% in just the first season. 
                 The weather predictions and soil recommendations were spot-on."
               </blockquote>
-              <div className="font-semibold">James Mitchell</div>
-              <div className="text-primary-foreground/80">Iowa, USA - Corn Farmer</div>
+              <div className="font-semibold">Ramesh Chauhan</div>
+              <div className="text-primary-foreground/80">Etawah, Uttar Pradesh </div>
             </CardContent>
           </Card>
         </section>
