@@ -115,8 +115,8 @@ const Footer = () => {
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-accent" />
                 <span className="text-sm text-primary-foreground/80">
-                  AgriTech Park, Sector 67<br />
-                  Gurugram, Haryana 122018
+                  Netaji Subhas University of Technology <br />
+                  sector-3 Dwarka
                 </span>
               </li>
               <li className="flex items-center space-x-2">
@@ -125,7 +125,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-accent" />
-                <span className="text-sm text-primary-foreground/80">info@agripredict.com</span>
+                <span className="text-sm text-primary-foreground/80">info@greenbyte.com</span>
               </li>
             </ul>
           </div>

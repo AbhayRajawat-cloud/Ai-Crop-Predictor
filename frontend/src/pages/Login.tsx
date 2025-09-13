@@ -62,7 +62,7 @@ const Login = () => {
                   <Sprout className="h-6 w-6" />
                 </div>
                 <div>
-                  <span className="text-xl font-bold text-foreground">AgriPredict</span>
+                  <span className="text-xl font-bold text-foreground">GreenByte</span>
                 </div>
               </Link>
               

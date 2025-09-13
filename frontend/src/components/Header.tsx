@@ -10,7 +10,8 @@ import {
   Users, 
   BookOpen, 
   LogIn,
-  Sprout
+  Sprout,
+  Home
 } from "lucide-react";
 
 const Header = () => {
@@ -21,7 +22,6 @@ const Header = () => {
     { name: "About Us", href: "/about", icon: BookOpen },
     { name: "Success Stories", href: "/success-stories", icon: Users },
     { name: "Weather Report", href: "/weather", icon: Cloud },
-    { name: "Get Started", href: "/get-started", icon: BarChart3 },
   ];
 
   const isActiveRoute = (path: string) => location.pathname === path;
@@ -35,8 +35,8 @@ const Header = () => {
             <Sprout className="h-6 w-6" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-bold text-foreground">GreenByte</span>
-            <span className="text-xs text-muted-foreground">AI Crop Intelligence</span>
+              <span className="text-xl font-bold text-foreground">GreenByte</span>
+              <span className="text-xs text-muted-foreground">AI Crop Intelligence</span>
           </div>
         </Link>
 

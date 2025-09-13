@@ -17,44 +17,44 @@ const SuccessStories = () => {
   const stories = [
     {
       id: 1,
-      name: "Maria Santos",
-      location: "São Paulo, Brazil",
+      name: "Sukesh",
+      location: "Dhanbad, Jharkhand",
       crop: "Soybeans",
-      improvement: "+22%",
+      improvement: "+12%",
       metric: "Yield Increase",
       year: "2024",
-      story: "Using AgriPredict's soil health monitoring and irrigation optimization, I increased my soybean yield by 22% while reducing water usage by 15%. The AI recommendations helped me identify the perfect planting windows and fertilizer schedules.",
+      story: "Using GreenByte's soil health monitoring and irrigation optimization, I increased my soybean yield by 12% while reducing water usage by 15%. The AI recommendations helped me identify the perfect planting windows and fertilizer schedules.",
       avatar: "MS",
       benefits: ["22% higher yields", "15% less water usage", "30% cost reduction in fertilizers"]
     },
     {
       id: 2,
-      name: "James Mitchell",
-      location: "Iowa, USA",
-      crop: "Corn",
-      improvement: "+18%",
+      name: "Mukesh",
+      location: "Dewas, Madhya Pradesh",
+      crop: "Rice",
+      improvement: "+16%",
       metric: "Profit Increase",
       year: "2024",
-      story: "The weather prediction accuracy was incredible. AgriPredict warned me about a potential drought 3 weeks in advance, allowing me to adjust my irrigation strategy and save my entire corn crop. This technology paid for itself in the first season.",
+      story: "The weather prediction accuracy was incredible. GreenByte warned me about a potential drought 3 weeks in advance, allowing me to adjust my irrigation strategy and save my entire corn crop. This technology paid for itself in the first season.",
       avatar: "JM",
-      benefits: ["Early drought warning", "Saved entire crop", "18% profit increase"]
+      benefits: ["Early drought warning", "Saved entire crop", "16% profit increase"]
     },
     {
       id: 3,
       name: "Priya Sharma",
       location: "Punjab, India",
       crop: "Rice",
-      improvement: "+25%",
+      improvement: "+20%",
       metric: "Yield Improvement",
       year: "2023",
-      story: "As a small-scale farmer, I was skeptical about AI technology. But AgriPredict's simple interface and accurate predictions transformed my rice farming. The pest control recommendations alone saved me thousands in crop losses.",
+      story: "As a small-scale farmer, I was skeptical about AI technology. But GreenByte's simple interface and accurate predictions transformed my rice farming. The pest control recommendations alone saved me thousands in crop losses.",
       avatar: "PS",
       benefits: ["25% yield boost", "Prevented major pest losses", "Simple to use interface"]
     },
     {
       id: 4,
-      name: "David Thompson",
-      location: "Victoria, Australia",
+      name: "Mahender Singh",
+      location: "Bagpat, Uttar Pradesh",
       crop: "Wheat",
       improvement: "+16%",
       metric: "Resource Efficiency",
@@ -67,7 +67,7 @@ const SuccessStories = () => {
 
   const stats = [
     { icon: Users, number: "50,000+", label: "Happy Farmers" },
-    { icon: TrendingUp, number: "15%", label: "Average Yield Increase" },
+    { icon: TrendingUp, number: "10%", label: "Average Yield Increase" },
     { icon: Leaf, number: "25%", label: "Resource Savings" },
     { icon: BarChart3, number: "98%", label: "Prediction Accuracy" }
   ];
@@ -82,7 +82,7 @@ const SuccessStories = () => {
               Success Stories
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/90">
-              Real farmers, real results. Discover how AgriPredict is transforming 
+              Real farmers, real results. Discover how GreenByte is transforming 
               agriculture around the world, one farm at a time.
             </p>
           </div>
@@ -112,7 +112,7 @@ const SuccessStories = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Farmer Testimonials</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hear directly from farmers who have transformed their operations with AgriPredict's AI-powered insights.
+              Hear directly from farmers who have transformed their operations with GreenByte's AI-powered insights.
             </p>
           </div>
 
@@ -225,14 +225,14 @@ const SuccessStories = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Be Our Next Success Story</h2>
           <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of farmers who are already seeing remarkable results with AgriPredict. 
+            Join thousands of farmers who are already seeing remarkable results with GreenByte. 
             Start your journey to smarter, more profitable farming today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" asChild>
               <Link to="/get-started">Begin Your Journey</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+            <Button variant="outline" size="lg" className="border-primary-foreground/20 text-black hover:bg-primary-foreground/10" asChild>
               <Link to="/about">Learn More</Link>
             </Button>
           </div>

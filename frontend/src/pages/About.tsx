@@ -38,8 +38,8 @@ const About = () => {
 
   const stats = [
     { number: "50K+", label: "Active Farmers" },
-    { number: "15%", label: "Average Yield Increase" },
-    { number: "25+", label: "Countries Served" },
+    { number: "10%", label: "Average Yield Increase" },
+    { number: "28", label: "States Served" },
     { number: "98%", label: "Prediction Accuracy" }
   ];
 
@@ -50,7 +50,7 @@ const About = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              About AgriPredict
+              About GreenByte
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/90">
               Revolutionizing agriculture through artificial intelligence and data science, 
@@ -67,7 +67,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-6">Our Mission</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                At AgriPredict, we believe that every farmer deserves access to the same advanced 
+                At GreenByte, we believe that every farmer deserves access to the same advanced 
                 technology used by large agricultural corporations. Our mission is to democratize 
                 agricultural intelligence, making cutting-edge AI accessible to small and 
                 medium-scale farmers worldwide.
@@ -209,14 +209,14 @@ const About = () => {
           </div>
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Farm?</h2>
           <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of farmers who are already using AgriPredict to increase their yields, 
+            Join thousands of farmers who are already using GreenByte to increase their yields, 
             reduce costs, and build more sustainable farming operations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="secondary" size="lg" asChild>
               <Link to="/get-started">Get Started Now</Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10" asChild>
+            <Button variant="outline" size="lg" className="border-white text-black hover:bg-white/10 px-8" asChild>
               <Link to="/success-stories">View Success Stories</Link>
             </Button>
           </div>

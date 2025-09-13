@@ -57,7 +57,7 @@ const Index = () => {
 
   const stats = [
     { number: "50,000+", label: "Active Farmers" },
-    { number: "15%", label: "Average Yield Increase" },
+    { number: "10%", label: "Average Yield Increase" },
     { number: "28", label: "Indian States Covered" },
     { number: "98%", label: "Prediction Accuracy" }
   ];
@@ -107,7 +107,7 @@ const Index = () => {
             </h1>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
               Transform your farming across India with AI-driven insights that predict crop yields, optimize resources, 
-              and increase productivity by up to 25%. Join 50,000+ farmers already using AgriPredict across Indian states.
+              and increase productivity by up to 10%. Join 50,000+ farmers already using AgriPredict across Indian states.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -263,18 +263,6 @@ const Index = () => {
               Start your journey today and discover the power of AI-driven agriculture tailored for India.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Button size="lg" variant="secondary" className="px-8 font-semibold" asChild>
-                <Link to="/get-started">
-                  Get Started Now
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="border-white-800 text-black hover:bg-white/10 px-8" asChild>
-                <Link to="/weather">View Weather Demo</Link>
-              </Button>
-            </div>
-            
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-white/80">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="h-4 w-4 text-accent" />
@@ -283,10 +271,6 @@ const Index = () => {
               <div className="flex items-center space-x-2">
                 <Users className="h-4 w-4 text-accent" />
                 <span>24/7 support included</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Smartphone className="h-4 w-4 text-accent" />
-                <span>Mobile app access</span>
               </div>
             </div>
           </div>
