@@ -135,7 +135,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col md:flex-row md:items-center md:space-x-6">
               <p className="text-sm text-primary-foreground/80">
-                © 2025 AgriPredict. All rights reserved.
+                © 2025 GreenByte. All rights reserved.
               </p>
               <div className="mt-2 flex space-x-4 md:mt-0">
                 <Link to="/privacy" className="flex items-center space-x-1 text-xs text-primary-foreground/80 hover:text-primary-foreground transition-smooth">
