@@ -15,7 +15,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://fuzzy-goldfish-pjqr7q99x4pvf7447-8080.app.github.dev",
+  credentials: true
+}));
+
 app.use(passport.initialize());
 configurePassport(passport);
 
