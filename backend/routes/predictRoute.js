@@ -1,44 +1,50 @@
+// backend/routes/predictRoute.js
 import express from "express";
 import { spawn } from "child_process";
+import path from "path";
 
 const router = express.Router();
 
-// Test route
+// quick test
 router.get("/test", (req, res) => {
-  res.json({ message: "Predict route working!" });
+  res.json({ message: "✅ Predict route working!" });
 });
 
+// POST /predict  (this router is expected to be mounted at "/predict" in server.js)
 router.post("/", (req, res) => {
-  const inputData = req.body;  
-  // Expecting: { "temperature": 25, "rainfall": 120, "soil_health": 0.8 }
+  const inputData = req.body; // Expect full input object matching the model (Crop, Crop_Year, Season, State, Area, Production, Annual_Rainfall, Fertilizer, Pesticide)
 
-  const pythonProcess = spawn("python3", [
-    "backend/Ml_model/predictor.py",
-    JSON.stringify(inputData)
-  ]);
+  // Resolve predictor.py path relative to the project backend root (robust to where node is started)
+  const scriptPath = path.join(process.cwd(), "Ml_model", "predictor.py");
+
+  // Spawn Python and pass the whole input JSON as a single CLI argument
+  const pythonProcess = spawn("python3", [scriptPath, JSON.stringify(inputData)]);
 
   let result = "";
-
   pythonProcess.stdout.on("data", (data) => {
     result += data.toString();
   });
 
   pythonProcess.stderr.on("data", (data) => {
-    console.error(`❌ Python error: ${data}`);
+    // log Python errors to server console for debugging
+    console.error(`❌ Python stderr: ${data.toString()}`);
   });
 
   pythonProcess.on("close", (code) => {
     if (code === 0) {
       try {
-        const prediction = JSON.parse(result); 
-        res.json(prediction);  // -> { "predicted_yield": 42.3 }
-      } catch (e) {
-        res.status(500).json({ error: "Invalid response from model" });
+        // predictor.py prints JSON like: {"predicted_yield": 4.34}
+        const parsed = JSON.parse(result);
+        return res.json(parsed);
+      } catch (err) {
+        console.error("Failed to parse model output:", result);
+        return res.status(500).json({ error: "Invalid response from model", raw: result });
       }
     } else {
-      res.status(500).json({ error: "Model execution failed" });
+      return res.status(500).json({ error: `Model process exited with code ${code}` });
     }
   });
 });
 
 export default router;
+
