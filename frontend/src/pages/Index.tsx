@@ -1,9 +1,9 @@
+import React from 'react'; // Added React import
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-//import heroImage from "@/assets/hero-agriculture.jpg";
 const heroImage = "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80";
 import { 
   BarChart3,
@@ -153,12 +153,25 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="shadow-soft hover:shadow-medium transition-smooth float-animation">
+              <Card
+                key={index}
+                className="shadow-soft hover:shadow-medium transition-smooth float-animation"
+              >
                 <CardContent className="p-8 text-center">
                   <div className="mx-auto mb-6 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
                     <feature.icon className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">{feature.title}</h3>
+
+                  {feature.title === "AI Yield Prediction" ? (
+                    <Link to="/YieldPrediction" className="text-xl font-semibold text-foreground mb-4 block hover:text-accent">
+                      {feature.title}
+                    </Link>
+                  ) : (
+                    <h3 className="text-xl font-semibold text-foreground mb-4">
+                      {feature.title}
+                    </h3>
+                  )}
+
                   <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>

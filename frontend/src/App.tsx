@@ -10,6 +10,7 @@ import Weather from "./pages/Weather";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import YieldPrediction from "./pages/YieldPrediction";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/weather" element={<Weather />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/YieldPrediction" element={<YieldPrediction />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
