@@ -136,49 +136,64 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              Comprehensive Platform
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4 sm:text-4xl">
-              Everything You Need for Smart Farming
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our AI-powered platform provides end-to-end agricultural intelligence, 
-              from planting decisions to harvest optimization.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="shadow-soft hover:shadow-medium transition-smooth float-animation"
-              >
-                <CardContent className="p-8 text-center">
-                  <div className="mx-auto mb-6 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <feature.icon className="h-8 w-8 text-primary" />
-                  </div>
+<section className="py-20 bg-background">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+        Comprehensive Platform
+      </Badge>
+      <h2 className="text-3xl font-bold text-foreground mb-4 sm:text-4xl">
+        Everything You Need for Smart Farming
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Our AI-powered platform provides end-to-end agricultural intelligence, 
+        from planting decisions to harvest optimization.
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => {
+        // Map feature titles to their routes
+        const routes: Record<string, string> = {
+          "AI Yield Prediction": "/YieldPrediction",
+          "Weather Intelligence": "/Weather",
+          "Get Started": "/GetStarted",
+        };
 
-                  {feature.title === "AI Yield Prediction" ? (
-                    <Link to="/YieldPrediction" className="text-xl font-semibold text-foreground mb-4 block hover:text-accent">
-                      {feature.title}
-                    </Link>
-                  ) : (
-                    <h3 className="text-xl font-semibold text-foreground mb-4">
-                      {feature.title}
-                    </h3>
-                  )}
+        return (
+          <Card
+            key={index}
+            className="shadow-soft hover:shadow-medium transition-smooth float-animation"
+          >
+            <CardContent className="p-8 text-center">
+              <div className="mx-auto mb-6 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <feature.icon className="h-8 w-8 text-primary" />
+              </div>
 
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+              {routes[feature.title] ? (
+                <Link
+                  to={routes[feature.title]}
+                  className="text-xl font-semibold text-foreground mb-4 block hover:text-accent"
+                >
+                  {feature.title}
+                </Link>
+              ) : (
+                <h3 className="text-xl font-semibold text-foreground mb-4">
+                  {feature.title}
+                </h3>
+              )}
+
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
       {/* How It Works */}
       <section className="py-20 bg-muted/30">

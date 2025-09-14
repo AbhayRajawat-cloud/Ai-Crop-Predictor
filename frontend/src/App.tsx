@@ -43,7 +43,9 @@ const App = () => (
 
           {/* Dashboard & Features */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/yield-prediction" element={<YieldPrediction />} />
+          {/* ✅ Fixed route to match Index.tsx link */}
+          <Route path="/YieldPrediction" element={<YieldPrediction />} />
+
           {/* <Route path="/weather-intelligence" element={<WeatherIntelligence />} />
           <Route path="/soil-health" element={<SoilHealth />} />
           <Route path="/pest-disease" element={<PestDisease />} />

@@ -1,63 +1,130 @@
+// frontend/src/pages/YieldPrediction.tsx
 import React, { useState } from "react";
 
-const YieldPrediction = () => {
+const YieldPrediction: React.FC = () => {
   const [formData, setFormData] = useState({
-    crop: "",
-    area: "",
-    rainfall: "",
-    temperature: "",
-    fertilizer: "",
+    Crop: "Wheat",
+    State: "Punjab",
+    Season: "Rabi",
+    Crop_Year: 2023,
+    Area: 100,
+    Production: 200,
+    Annual_Rainfall: 1200,
+    Fertilizer: 50,
+    Pesticide: 10,
   });
-  const [prediction, setPrediction] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [prediction, setPrediction] = useState<number | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]:
+        ["Crop_Year", "Area", "Production", "Annual_Rainfall", "Fertilizer", "Pesticide"].includes(
+          name
+        )
+          ? Number(value)
+          : value,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("http://localhost:5000/predict", {  // adjust backend port if different
+      const res = await fetch("http://localhost:5000/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-      setPrediction(data.prediction); // assuming backend returns { prediction: value }
-    } catch (error) {
-      console.error("Error fetching prediction:", error);
-      setPrediction("Error fetching prediction");
+      const data = await res.json();
+      setPrediction(data.predicted_yield);
+    } catch (err) {
+      console.error("Error fetching prediction:", err);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-8">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">AI Yield Prediction</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <select name="crop" value={formData.crop} onChange={handleChange} className="w-full border rounded p-2" required>
-            <option value="">Select Crop</option>
-            <option value="wheat">Wheat</option>
-            <option value="rice">Rice</option>
-            <option value="maize">Maize</option>
-          </select>
-          <input type="number" name="area" placeholder="Area (hectares)" value={formData.area} onChange={handleChange} className="w-full border rounded p-2" required />
-          <input type="number" name="rainfall" placeholder="Rainfall (mm)" value={formData.rainfall} onChange={handleChange} className="w-full border rounded p-2" required />
-          <input type="number" name="temperature" placeholder="Temperature (°C)" value={formData.temperature} onChange={handleChange} className="w-full border rounded p-2" required />
-          <input type="number" name="fertilizer" placeholder="Fertilizer (kg/ha)" value={formData.fertilizer} onChange={handleChange} className="w-full border rounded p-2" required />
-          <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
-            Predict Yield
-          </button>
-        </form>
+    <div className="p-6 max-w-lg mx-auto">
+      <h2 className="text-2xl font-bold mb-4">🌱 AI Crop Yield Prediction</h2>
 
-        {prediction && (
-          <div className="mt-6 p-4 bg-green-50 border rounded text-center text-lg font-semibold text-green-800">
-            Predicted Yield: {prediction} tons/ha
-          </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Dropdowns */}
+        <div>
+          <label className="block font-medium">Crop</label>
+          <select
+            name="Crop"
+            value={formData.Crop}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          >
+            <option>Rice</option>
+            <option>Wheat</option>
+            <option>Maize</option>
+            <option>Sugarcane</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block font-medium">State</label>
+          <select
+            name="State"
+            value={formData.State}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          >
+            <option>Punjab</option>
+            <option>Delhi</option>
+            <option>Bihar</option>
+            <option>Maharashtra</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block font-medium">Season</label>
+          <select
+            name="Season"
+            value={formData.Season}
+            onChange={handleChange}
+            className="w-full border p-2 rounded"
+          >
+            <option>Kharif</option>
+            <option>Rabi</option>
+            <option>Zaid</option>
+          </select>
+        </div>
+
+        {/* Numeric Inputs */}
+        {["Crop_Year", "Area", "Production", "Annual_Rainfall", "Fertilizer", "Pesticide"].map(
+          (field) => (
+            <div key={field}>
+              <label className="block font-medium">{field.replace("_", " ")}</label>
+              <input
+                type="number"
+                name={field}
+                value={(formData as any)[field]}
+                onChange={handleChange}
+                className="w-full border p-2 rounded"
+              />
+            </div>
+          )
         )}
-      </div>
+
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white p-2 rounded"
+        >
+          Predict
+        </button>
+      </form>
+
+      {prediction !== null && (
+        <div className="mt-4 p-4 bg-green-100 border rounded">
+          🌾 Predicted Yield: <strong>{prediction.toFixed(2)}</strong>
+        </div>
+      )}
     </div>
   );
 };
