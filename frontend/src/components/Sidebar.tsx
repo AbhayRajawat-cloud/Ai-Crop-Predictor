@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { name: "Dashboard", path: "/dashboard", icon: LayoutGrid },
-  { name: "AI Yield Prediction", path: "/yield-prediction", icon: TrendingUp },
+  { name: "AI Yield Prediction", path: "/yield", icon: TrendingUp },
   { name: "Weather Intelligence", path: "/weather", icon: Cloud, comingSoon: true },
   { name: "Soil Health", path: "/soil-health", icon: Leaf, comingSoon: true },
   { name: "Pest & Disease", path: "/pest-disease", icon: Bug, comingSoon: true },
