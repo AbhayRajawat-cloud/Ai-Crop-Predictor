@@ -15,6 +15,8 @@ const YieldPrediction: React.FC = () => {
   });
 
   const [prediction, setPrediction] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -33,16 +35,27 @@ const YieldPrediction: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
+    
     try {
       const res = await fetch("http://localhost:5000/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+      
+      if (!res.ok) {
+        throw new Error(`Server responded with status: ${res.status}`);
+      }
+      
       const data = await res.json();
       setPrediction(data.predicted_yield);
     } catch (err) {
       console.error("Error fetching prediction:", err);
+      setError("Failed to get prediction. Please check if the server is running.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,11 +72,12 @@ const YieldPrediction: React.FC = () => {
             value={formData.Crop}
             onChange={handleChange}
             className="w-full border p-2 rounded"
+            required
           >
-            <option>Rice</option>
-            <option>Wheat</option>
-            <option>Maize</option>
-            <option>Sugarcane</option>
+            <option value="Rice">Rice</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Maize">Maize</option>
+            <option value="Sugarcane">Sugarcane</option>
           </select>
         </div>
 
@@ -74,11 +88,12 @@ const YieldPrediction: React.FC = () => {
             value={formData.State}
             onChange={handleChange}
             className="w-full border p-2 rounded"
+            required
           >
-            <option>Punjab</option>
-            <option>Delhi</option>
-            <option>Bihar</option>
-            <option>Maharashtra</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Maharashtra">Maharashtra</option>
           </select>
         </div>
 
@@ -89,10 +104,11 @@ const YieldPrediction: React.FC = () => {
             value={formData.Season}
             onChange={handleChange}
             className="w-full border p-2 rounded"
+            required
           >
-            <option>Kharif</option>
-            <option>Rabi</option>
-            <option>Zaid</option>
+            <option value="Kharif">Kharif</option>
+            <option value="Rabi">Rabi</option>
+            <option value="Zaid">Zaid</option>
           </select>
         </div>
 
@@ -107,6 +123,8 @@ const YieldPrediction: React.FC = () => {
                 value={(formData as any)[field]}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
+                required
+                min="0"
               />
             </div>
           )
@@ -114,15 +132,30 @@ const YieldPrediction: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-green-600 text-white p-2 rounded"
+          disabled={loading}
+          className={`w-full p-2 rounded text-white ${
+            loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-600 hover:bg-green-700"
+          }`}
         >
-          Predict
+          {loading ? "⏳ Predicting..." : "🔮 Predict"}
         </button>
       </form>
 
+      {error && (
+        <div className="mt-4 p-4 bg-red-100 border border-red-300 rounded text-red-700">
+          ❌ {error}
+        </div>
+      )}
+
       {prediction !== null && (
-        <div className="mt-4 p-4 bg-green-100 border rounded">
-          🌾 Predicted Yield: <strong>{prediction.toFixed(2)}</strong>
+        <div className="mt-4 p-4 bg-green-100 border border-green-300 rounded">
+          <h3 className="font-bold text-lg">🌾 Prediction Result</h3>
+          <p className="mt-2">
+            Predicted Yield: <strong>{prediction.toFixed(2)} units/hectare</strong>
+          </p>
+          <p className="text-sm text-gray-600 mt-2">
+            Based on your inputs for {formData.Crop} in {formData.State} ({formData.Season} season)
+          </p>
         </div>
       )}
     </div>
