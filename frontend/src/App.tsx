@@ -44,8 +44,8 @@ const App = () => (
 
           {/* Dashboard & Features */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/yield-prediction" element={<YieldPrediction />} />
-          {/* <Route path="/weather-intelligence" element={<WeatherIntelligence />} />
+          <Route path="/YieldPrediction" element={<YieldPrediction />} /> {/* Fixed this line */}
+          <Route path="/weather-intelligence" element={<WeatherIntelligence />} />
           <Route path="/soil-health" element={<SoilHealth />} />
           <Route path="/pest-disease" element={<PestDisease />} />
           <Route path="/irrigation" element={<Irrigation />} />
