@@ -16,17 +16,17 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors({
-  origin: "https://fuzzy-goldfish-pjqr7q99x4pvf7447-8080.app.github.dev",
+  origin: "https://fuzzy-goldfish-pjqr7q99x4pvf7447-8080.app.github.dev", // ← FRONTEND URL (port 8080)
   credentials: true
 }));
 
 app.use(passport.initialize());
 configurePassport(passport);
 
-// DB Connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error(err));
+//DB Connection
+//mongoose.connect(process.env.MONGO_URI)
+  //.then(() => console.log("✅ MongoDB connected"))
+  //.catch(err => console.error(err));
 
 // Routes
 app.use("/auth", authRoutes);

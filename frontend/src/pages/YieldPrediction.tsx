@@ -39,7 +39,7 @@ const YieldPrediction: React.FC = () => {
     setError(null);
     
     try {
-      const res = await fetch("https://fuzzy-goldfish-xxxx-5000.app.github.dev/predict", {
+      const res = await fetch("https://fuzzy-goldfish-pjqr7q99x4pvf7447-5000.app.github.dev/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
