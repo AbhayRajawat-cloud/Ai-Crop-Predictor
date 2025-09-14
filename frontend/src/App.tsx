@@ -13,13 +13,14 @@ import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import YieldPrediction from "./pages/YieldPrediction";
-// import WeatherIntelligence from "./pages/WeatherIntelligence";
-// import SoilHealth from "./pages/SoilHealth";
-// import PestDisease from "./pages/PestDisease";
-// import Irrigation from "./pages/Irrigation";
-// import Performance from "./pages/Performance";
+import YieldPrediction_1 from "./pages/YieldPrediction_1";
+import WeatherIntelligence from "./pages/WeatherIntelligence";
+import SoilHealth from "./pages/SoilHealth";
+import PestDisease from "./pages/PestDisease";
+import Irrigation from "./pages/Irrigation";
+import Performance from "./pages/Performance";
 import ContactUs from "./pages/ContactUs";
-// import HelpDesk from "./pages/HelpDesk";
+import HelpDesk from "./pages/HelpDesk";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,18 +44,16 @@ const App = () => (
 
           {/* Dashboard & Features */}
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* ✅ Fixed route to match Index.tsx link */}
-          <Route path="/YieldPrediction" element={<YieldPrediction />} />
-
+          <Route path="/yield-prediction" element={<YieldPrediction />} />
           {/* <Route path="/weather-intelligence" element={<WeatherIntelligence />} />
           <Route path="/soil-health" element={<SoilHealth />} />
           <Route path="/pest-disease" element={<PestDisease />} />
           <Route path="/irrigation" element={<Irrigation />} />
-          <Route path="/performance" element={<Performance />} /> */}
+          <Route path="/performance" element={<Performance />} />
 
           {/* Support */}
           <Route path="/contact" element={<ContactUs />} />
-          {/* <Route path="/help" element={<HelpDesk />} /> */}
+          <Route path="/help" element={<HelpDesk />} />
 
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
