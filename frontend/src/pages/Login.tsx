@@ -15,11 +15,13 @@ import {
   Users,
   CheckCircle,
 } from "lucide-react";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -35,15 +37,45 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 🔑 For now, just navigate directly
-    if (isLogin) {
-      // Simulate login
-      navigate("/dashboard");
-    } else {
-      // Simulate account creation
-      navigate("/dashboard");
+    setLoading(true);
+
+    try {
+      if (isLogin) {
+       
+        const res = await axios.post("http://localhost:5000/api/auth/login", {
+          email: formData.email,
+          password: formData.password,
+        });
+
+       
+        localStorage.setItem("token", res.data.token);
+
+        alert("Login successful!");
+        navigate("/dashboard");
+      } else {
+       
+        if (formData.password !== formData.confirmPassword) {
+          alert("Passwords do not match!");
+          setLoading(false);
+          return;
+        }
+
+        await axios.post("http://localhost:5000/api/auth/register", {
+          email: formData.email,
+          password: formData.password,
+          farmName: formData.farmName,
+        });
+
+        alert("Account created! Please log in.");
+        setIsLogin(true);
+      }
+    } catch (error: any) {
+      console.error(error);
+      alert(error.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,7 +120,7 @@ const Login = () => {
               </h2>
               <p className="mt-2 text-muted-foreground">
                 {isLogin
-                  ? "Sign in to your GreenByte dashboard"
+                  ? "Login to your GreenByte dashboard"
                   : "Join thousands of farmers using AI to optimize their crops"}
               </p>
             </div>
@@ -97,7 +129,7 @@ const Login = () => {
             <Card className="shadow-medium">
               <CardHeader>
                 <CardTitle className="text-center">
-                  {isLogin ? "Sign In" : "Sign Up"}
+                  {isLogin ? "Login" : "Register"}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -176,10 +208,7 @@ const Login = () => {
                           className="pl-10"
                           value={formData.confirmPassword}
                           onChange={(e) =>
-                            handleInputChange(
-                              "confirmPassword",
-                              e.target.value
-                            )
+                            handleInputChange("confirmPassword", e.target.value)
                           }
                           required
                         />
@@ -191,8 +220,13 @@ const Login = () => {
                     type="submit"
                     className="w-full bg-primary hover:bg-primary-hover"
                     size="lg"
+                    disabled={loading}
                   >
-                    {isLogin ? "Sign In" : "Create Account"}
+                    {loading
+                      ? "Processing..."
+                      : isLogin
+                      ? "Login"
+                      : "Create Account"}
                   </Button>
                 </form>
 
@@ -206,7 +240,7 @@ const Login = () => {
                     onClick={() => setIsLogin(!isLogin)}
                     className="text-sm text-primary hover:text-primary-hover font-medium"
                   >
-                    {isLogin ? "Sign up" : "Sign in"}
+                    {isLogin ? "Register" : "Login"}
                   </button>
                 </div>
               </CardContent>
