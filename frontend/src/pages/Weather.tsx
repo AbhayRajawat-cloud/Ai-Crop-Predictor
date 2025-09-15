@@ -74,7 +74,7 @@ export default function Weather() {
         max: info.max.toFixed(1),
         weather: info.weather,
       }))
-      .slice(0, 7); // 7 days
+      .slice(0, 5); // ✅ only 5 days
   }
 
   // ✅ Fetch current weather by city
@@ -120,7 +120,7 @@ export default function Weather() {
     }
   }
 
-  // ✅ Fetch 7-day forecast by city
+  // ✅ Fetch 5-day forecast by city
   async function fetchForecastByCity(city: string) {
     try {
       const response = await fetch(
@@ -135,7 +135,7 @@ export default function Weather() {
     }
   }
 
-  // ✅ Fetch 7-day forecast by coords
+  // ✅ Fetch 5-day forecast by coords
   async function fetchForecastByCoords(lat: number, lon: number) {
     try {
       const response = await fetch(
@@ -300,11 +300,11 @@ export default function Weather() {
         {forecastData.length > 0 && (
           <Card className="shadow-medium">
             <CardHeader>
-              <CardTitle>7-Day Forecast</CardTitle>
+              <CardTitle>5-Day Forecast</CardTitle>
             </CardHeader>
             <CardContent>
-              {/* ✅ Wider cards, 3–4 per row */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {/* ✅ 5 cards in single row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
                 {forecastData.map((day, idx) => (
                   <div
                     key={idx}
