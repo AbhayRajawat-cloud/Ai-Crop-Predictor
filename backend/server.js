@@ -8,7 +8,7 @@ require('dotenv').config();
 // Import routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const cropRoutes = require('./routes/crop');
+//const cropRoutes = require('./routes/crop');
 const dashboardRoutes = require('./routes/dashboard');
 
 const app = express();
@@ -26,7 +26,7 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000' || 'https://super-duper-parakeet-97wvvrjjrx5vf6wg-8080.app.github.dev/',
   credentials: true
 }));
 
@@ -45,7 +45,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-crop-p
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/crop', cropRoutes);
+//app.use('/api/crop', cropRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
 // Health check endpoint

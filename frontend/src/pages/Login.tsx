@@ -44,35 +44,40 @@ const Login = () => {
     try {
       if (isLogin) {
        
-        const res = await axios.post("http://localhost:5000/api/auth/login", {
+       
+        const res = await axios.post("https://super-duper-parakeet-97wvvrjjrx5vf6wg-5000.app.github.dev/api/user/login", {
           email: formData.email,
           password: formData.password,
         });
 
+
+       console.log(" hadfhjgdjh");
        
         localStorage.setItem("token", res.data.token);
 
         alert("Login successful!");
         navigate("/dashboard");
       } else {
-       
+        console.log(" hadfhjgdjh1");
         if (formData.password !== formData.confirmPassword) {
           alert("Passwords do not match!");
           setLoading(false);
           return;
         }
 
-        await axios.post("http://localhost:5000/api/auth/register", {
-          email: formData.email,
-          password: formData.password,
-          farmName: formData.farmName,
-        });
+        // await axios.post("http://localhost:5000/api/auth/register", {
+        //   email: formData.email,
+        //   password: formData.password,
+        //   farmName: formData.farmName,
+        // });
 
-        alert("Account created! Please log in.");
-        setIsLogin(true);
+        // alert("Account created! Please log in.");
+        // setIsLogin(true);
       }
-    } catch (error: any) {
+    } catch (error) {
+alert(error)
       console.error(error);
+       
       alert(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);

@@ -1,7 +1,7 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const { auth, admin } = require('../middleware/auth');
+const { auth, admin } = require('../Middleware/auth');
 const User = require('../models/User');
 
 const router = express.Router();
@@ -62,6 +62,7 @@ router.post(
     body('password').notEmpty().withMessage('Password is required'),
   ],
   async (req, res) => {
+    
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -70,14 +71,14 @@ router.post(
 
       const { email, password } = req.body;
 
-      const user = await User.findByEmail(email);
+      const user = await User.findOne({ email });
       if (!user) {
         return res.status(400).json({ status: 'error', message: 'Invalid email or password' });
       }
 
-      if (user.isLocked()) {
-        return res.status(403).json({ status: 'error', message: 'Account locked. Try again later.' });
-      }
+      // if (user.isLocked()) {
+      //   return res.status(403).json({ status: 'error', message: 'Account locked. Try again later.' });
+      // }
 
       const isMatch = await user.comparePassword(password);
       if (!isMatch) {
@@ -86,9 +87,9 @@ router.post(
       }
 
       // reset login attempts on success
-      user.loginAttempts = 0;
-      user.lockUntil = undefined;
-      user.lastLogin = new Date();
+      // user.loginAttempts = 0;
+      // user.lockUntil = undefined;
+      // user.lastLogin = new Date();
       await user.save();
 
       const token = jwt.sign({ userId: user._id, role: user.role }, JWT_SECRET, {

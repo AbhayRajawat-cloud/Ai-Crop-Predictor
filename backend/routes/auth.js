@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 const User = require("../models/User");
-const auth = require("../Middleware/auth");
+const {auth} = require("../Middleware/auth");
 
 const router = express.Router();
 
@@ -64,6 +64,7 @@ router.post(
     body("password").notEmpty().withMessage("Password required"),
   ],
   async (req, res) => {
+    
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
