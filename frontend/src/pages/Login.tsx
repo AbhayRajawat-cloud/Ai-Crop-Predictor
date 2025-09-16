@@ -35,7 +35,7 @@ const Login = () => {
       if (isLogin) {
         console.log('Attempting login with:', { email: formData.email });
         
-        const res = await axios.post(`${BACKEND_URL}/api/user/login` || process.env.REACT_APP_LOGIN_URL, {
+        const res = await axios.post(`${BACKEND_URL}/api/user/login`, {
   email: formData.email,
   password: formData.password,
 });
