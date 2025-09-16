@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import SuccessStories from "./pages/SuccessStories";
 import Weather from "./pages/Weather";
+import SmartCrop from "./pages/SmartCrop";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/SmartCrop" element={<SmartCrop />} />
           <Route path="/get-started" element={<GetStarted />} />
 
           {/* Auth */}

@@ -18,7 +18,8 @@ import {
   Star,
   Brain,
   Smartphone,
-  Globe
+  Globe,
+  Layers
 } from "lucide-react";
 
 const Index = () => {
@@ -34,6 +35,11 @@ const Index = () => {
       description: "Real-time weather monitoring and 14-day forecasts tailored for agricultural decision-making."
     },
     {
+      icon: Layers,
+      title: "Smart Crop Recommendation",
+      description: "AI-powered insights recommend the most profitable crops and intercropping patterns for your field.",
+    },
+    {
       icon: Leaf,
       title: "Soil Health Analytics",
       description: "Monitor soil conditions and receive recommendations for optimal nutrient management."
@@ -42,11 +48,6 @@ const Index = () => {
       icon: Shield,
       title: "Pest & Disease Control",
       description: "Early detection systems help prevent crop losses with timely intervention strategies."
-    },
-    {
-      icon: TrendingUp,
-      title: "Irrigation Optimization",
-      description: "Smart irrigation recommendations based on soil moisture, weather, and crop requirements."
     },
     {
       icon: BarChart3,
@@ -157,6 +158,7 @@ const Index = () => {
         const routes: Record<string, string> = {
           "AI Yield Prediction": "/YieldPrediction",
           "Weather Intelligence": "/Weather",
+          "Smart Crop Recommendation": "/SmartCrop",
           "Get Started": "/GetStarted",
         };
 
