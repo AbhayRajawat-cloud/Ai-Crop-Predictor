@@ -52,7 +52,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // ===== MongoDB =====
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ai-crop-predictor', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ai-crop-predictor', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
