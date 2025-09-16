@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Search, Droplets, Wind, Gauge, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
 
@@ -168,10 +169,10 @@ export default function Weather() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="hero-gradient py-20 text-white">
+      <section className="hero-gradient py-20 text-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Weather Intelligence
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+            Weather Forecast
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
             Advanced weather analytics and forecasting designed specifically for
@@ -182,7 +183,7 @@ export default function Weather() {
 
       {/* Search Section */}
       <div className="mx-auto max-w-3xl px-4 py-12">
-        <Card className="shadow-soft">
+        <Card className="shadow-lg border border-border/50 rounded-2xl">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4 items-end">
               <div className="flex-1">
@@ -196,19 +197,23 @@ export default function Weather() {
                     placeholder="Enter city..."
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 rounded-lg"
                   />
                 </div>
               </div>
               <div className="flex gap-2">
                 <Button
                   onClick={() => fetchWeatherByCity(location)}
-                  className="bg-primary hover:bg-primary-hover"
+                  className="bg-primary hover:bg-primary/90 rounded-lg"
                 >
                   <Search className="h-4 w-4 mr-2" />
-                  Update Location
+                  Update
                 </Button>
-                <Button variant="secondary" onClick={handleDetectLocation}>
+                <Button
+                  variant="secondary"
+                  onClick={handleDetectLocation}
+                  className="rounded-lg"
+                >
                   Use My Location
                 </Button>
               </div>
@@ -223,7 +228,7 @@ export default function Weather() {
         {error && <p className="text-red-500">{error}</p>}
 
         {weatherData && (
-          <Card className="shadow-medium mb-8">
+          <Card className="shadow-xl mb-8 bg-background/70 backdrop-blur rounded-2xl">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-muted-foreground" />
@@ -252,9 +257,9 @@ export default function Weather() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="flex items-center space-x-2">
-                  <Droplets className="h-4 w-4 text-sky" />
+                  <Droplets className="h-4 w-4 text-sky-500" />
                   <div>
                     <div className="text-sm text-muted-foreground">Humidity</div>
                     <div className="font-semibold">
@@ -298,17 +303,16 @@ export default function Weather() {
 
         {/* Forecast Section */}
         {forecastData.length > 0 && (
-          <Card className="shadow-medium">
+          <Card className="shadow-xl rounded-2xl">
             <CardHeader>
               <CardTitle>5-Day Forecast</CardTitle>
             </CardHeader>
             <CardContent>
-              {/* ✅ 5 cards in single row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
                 {forecastData.map((day, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-muted/40 text-center h-full"
+                    className="p-4 rounded-xl bg-muted/40 text-center transition hover:scale-105 hover:shadow-md"
                   >
                     <div className="font-medium">{day.date}</div>
                     <img
@@ -330,6 +334,22 @@ export default function Weather() {
           </Card>
         )}
       </div>
+
+      {/* Weather Intelligence CTA */}
+      <section className="bg-primary/10 py-16 mt-16">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="text-3xl font-bold mb-4">
+            Unlock Weather Intelligence
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            To access advanced weather insights and smart agricultural
+            recommendations, please log in.
+          </p>
+          <Button asChild size="lg" className="rounded-xl bg-primary hover:bg-primary/90">
+            <Link to="/login">Login to Continue</Link>
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }
