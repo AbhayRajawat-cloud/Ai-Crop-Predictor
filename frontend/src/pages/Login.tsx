@@ -35,10 +35,10 @@ const Login = () => {
       if (isLogin) {
         console.log('Attempting login with:', { email: formData.email });
         
-        const res = await axios.post(`${BACKEND_URL}/api/user/login`, {
-          email: formData.email,
-          password: formData.password,
-        });
+        const res = await axios.post(`${BACKEND_URL}/api/user/login` || process.env.REACT_APP_LOGIN_URL, {
+  email: formData.email,
+  password: formData.password,
+});
 
         console.log('Login response:', res.data);
         localStorage.setItem("token", res.data.token);
