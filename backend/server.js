@@ -28,8 +28,7 @@ app.use(limiter);
 
 // ===== CORS =====
 const allowedOrigins = [
-  
-  'http://localhost:3000',
+  'http://localhost:8080',
   'https://super-duper-parakeet-97wvvrjjrx5vf6wg-8080.app.github.dev', // Removed trailing slash
   'https://super-duper-parakeet-97wvvrjjrx5vf6wg-3000.app.github.dev', // Added React dev server
 ];

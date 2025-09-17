@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   // Use the correct backend URL
-  const BACKEND_URL = "https://super-duper-parakeet-97wvvrjjrx5vf6wg-5000.app.github.dev";
+  const BACKEND_URL = "http://localhost:5000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
