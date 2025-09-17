@@ -5,10 +5,11 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
-// Routes
+// ===== Routes =====
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const dashboardRoutes = require('./routes/dashboard');
+const predictRoute = require('./routes/predictRoute'); // ✅ ML Prediction route
 
 const app = express();
 
@@ -29,8 +30,8 @@ app.use(limiter);
 // ===== CORS =====
 const allowedOrigins = [
   'http://localhost:8080',
-  'https://super-duper-parakeet-97wvvrjjrx5vf6wg-8080.app.github.dev', // Removed trailing slash
-  'https://super-duper-parakeet-97wvvrjjrx5vf6wg-3000.app.github.dev', // Added React dev server
+  'https://super-duper-parakeet-97wvvrjjrx5vf6wg-8080.app.github.dev',
+  'https://super-duper-parakeet-97wvvrjjrx5vf6wg-3000.app.github.dev',
 ];
 
 app.use(cors({
@@ -62,6 +63,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ai-crop-p
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/predict', predictRoute); // ✅ Added ML prediction route
 
 // ===== Health Check =====
 app.get('/api/health', (req, res) => {

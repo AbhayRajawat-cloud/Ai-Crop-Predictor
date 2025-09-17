@@ -1,39 +1,41 @@
 // backend/routes/predictRoute.js
-import express from "express";
-import { spawn } from "child_process";
-import path from "path";
+const express = require("express");
+const { spawn } = require("child_process");
+const path = require("path");
 
 const router = express.Router();
 
-// quick test
+// ===== Test Route =====
 router.get("/test", (req, res) => {
   res.json({ message: "✅ Predict route working!" });
 });
 
-// POST /predict  (this router is expected to be mounted at "/predict" in server.js)
+// ===== POST /api/predict =====
+// This will be mounted at /api/predict in server.js
 router.post("/", (req, res) => {
-  const inputData = req.body; // Expect full input object matching the model (Crop, Crop_Year, Season, State, Area, Production, Annual_Rainfall, Fertilizer, Pesticide)
+  const inputData = req.body; 
+  // Expecting full input object (Crop, Crop_Year, Season, State, Area, Production, Annual_Rainfall, Fertilizer, Pesticide)
 
-  // Resolve predictor.py path relative to the project backend root (robust to where node is started)
+  // Robust path to predictor.py (from backend root)
   const scriptPath = path.join(process.cwd(), "Ml_model", "predictor.py");
 
-  // Spawn Python and pass the whole input JSON as a single CLI argument
+  // Spawn Python process
   const pythonProcess = spawn("python3", [scriptPath, JSON.stringify(inputData)]);
 
   let result = "";
+
   pythonProcess.stdout.on("data", (data) => {
     result += data.toString();
   });
 
   pythonProcess.stderr.on("data", (data) => {
-    // log Python errors to server console for debugging
     console.error(`❌ Python stderr: ${data.toString()}`);
   });
 
   pythonProcess.on("close", (code) => {
     if (code === 0) {
       try {
-        // predictor.py prints JSON like: {"predicted_yield": 4.34}
+        // Expect JSON output from predictor.py
         const parsed = JSON.parse(result);
         return res.json(parsed);
       } catch (err) {
@@ -46,5 +48,4 @@ router.post("/", (req, res) => {
   });
 });
 
-export default router;
-
+module.exports = router;
