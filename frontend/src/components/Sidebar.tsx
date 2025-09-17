@@ -13,16 +13,17 @@ import {
   HelpCircle,
   ChevronLeft,
   ChevronRight,
+  LightbulbIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { name: "Dashboard", path: "/dashboard", icon: LayoutGrid },
+  { name: "Smart Crop Recommendation", path: "/SmartCrop_1", icon: LightbulbIcon },
   { name: "AI Yield Prediction", path: "/yield", icon: TrendingUp },
   { name: "Weather Intelligence", path: "/weather", icon: Cloud, comingSoon: true },
   { name: "Soil Health", path: "/soil-health", icon: Leaf, comingSoon: true },
   { name: "Pest & Disease", path: "/pest-disease", icon: Bug, comingSoon: true },
-  { name: "Irrigation", path: "/irrigation", icon: Droplets, comingSoon: true },
   { name: "Performance", path: "/performance", icon: BarChart3, comingSoon: true },
   { name: "Contact Us", path: "/contact", icon: MessageCircle },
   { name: "Help Desk", path: "/help", icon: HelpCircle },

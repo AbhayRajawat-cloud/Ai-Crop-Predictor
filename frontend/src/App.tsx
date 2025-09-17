@@ -10,6 +10,7 @@ import About from "./pages/About";
 import SuccessStories from "./pages/SuccessStories";
 import Weather from "./pages/Weather";
 import SmartCrop from "./pages/SmartCrop";
+import SmartCrop_1 from "./pages/SmartCrop_1";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -46,8 +47,9 @@ const App = () => (
 
           {/* Dashboard & Features */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/YieldPrediction" element={<YieldPrediction />} /> {/* Fixed this line */}
-          <Route path="/yield" element={<YieldPrediction_1 />} /> {/* Fixed this line */}
+          <Route path="/YieldPrediction" element={<YieldPrediction />} /> 
+          <Route path="/SmartCrop_1" element={<SmartCrop_1 />} /> 
+          <Route path="/yield" element={<YieldPrediction_1 />} /> 
           <Route path="/weather-intelligence" element={<WeatherIntelligence />} />
           <Route path="/soil-health" element={<SoilHealth />} />
           <Route path="/pest-disease" element={<PestDisease />} />

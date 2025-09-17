@@ -18,11 +18,11 @@ import {
 
 const Dashboard = () => {
   const farmerData = {
-    name: "John Farmer",
-    email: "john.farmer@example.com",
-    farmSize: "150 hectares",
+    name: "Drishti",
+    email: "Drishti2809@gmail.com",
+    farmSize: "150 acres",
     primaryCrop: "Wheat",
-    location: "Iowa, USA",
+    location: "Uttar Pradesh, India",
     yearProgress: 65,
   };
 
@@ -46,12 +46,6 @@ const Dashboard = () => {
       status: "Coming Soon",
     },
     {
-      title: "Irrigation Optimization",
-      icon: Droplets,
-      description: "Smart water management system",
-      status: "Coming Soon",
-    },
-    {
       title: "Performance Analytics",
       icon: BarChart3,
       description: "Comprehensive farm performance metrics",
@@ -64,9 +58,6 @@ const Dashboard = () => {
       <div className="space-y-6 animate-harvest">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold text-primary">Welcome back, {farmerData.name}!</h1>
-          <Badge variant="outline" className="bg-success text-success-foreground">
-            Premium Account
-          </Badge>
         </div>
 
         {/* Farmer Profile Card */}
@@ -131,6 +122,27 @@ const Dashboard = () => {
         </Card>
 
         {/* Active Feature */}
+        <Card className="shadow-card border-primary/20">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary" />
+              Smart Crop Prediction
+              <Badge className="bg-success text-success-foreground">Active</Badge>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">
+              AI-powered insights recommend the most profitable crops and intercropping patterns for your field.
+            </p>
+            <a
+              href="/SmartCrop_1"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:shadow-glow transition-bounce"
+            >
+              Start Prediction
+              <TrendingUp className="w-4 h-4" />
+            </a>
+          </CardContent>
+        </Card>
         <Card className="shadow-card border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">

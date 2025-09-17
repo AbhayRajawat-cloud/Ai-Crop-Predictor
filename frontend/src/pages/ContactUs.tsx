@@ -109,7 +109,7 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">support@greenbyte.com</p>
+                    <p className="text-sm text-muted-foreground">info@greenbyte.com</p>
                   </div>
                 </div>
 
@@ -119,7 +119,7 @@ const ContactUs = () => {
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-sm text-muted-foreground">+91 9876543210</p>
                   </div>
                 </div>
 
@@ -130,8 +130,8 @@ const ContactUs = () => {
                   <div>
                     <p className="font-medium">Address</p>
                     <p className="text-sm text-muted-foreground">
-                      123 Agriculture Way<br />
-                      Farm Valley, IA 50001
+                      Netaji Subhas University of Technology <br />
+                      sector-3 Dwarka
                     </p>
                   </div>
                 </div>

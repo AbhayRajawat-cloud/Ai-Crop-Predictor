@@ -25,8 +25,7 @@ export const TopBar = () => {
               </AvatarFallback>
             </Avatar>
             <div className="hidden md:block">
-              <p className="text-sm font-medium">John Farmer</p>
-              <p className="text-xs text-muted-foreground">Premium User</p>
+              <p className="text-sm font-medium"></p>
             </div>
           </div>
           
