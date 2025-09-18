@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
   // Path to predictor.py relative to backend root
   const scriptPath = path.join(process.cwd(), "Ml_model", "predictor.py");
 
-  // Use "py" for Windows, "python3" for Linux/Mac (can switch if needed)
+  // Use "py" for Windows, "python3" for Linux/Mac
   const pythonCmd = process.platform === "win32" ? "py" : "python3";
 
   // Spawn Python process with JSON input

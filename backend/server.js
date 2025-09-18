@@ -5,15 +5,15 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
-// ===== Routes =====
+// Routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const dashboardRoutes = require('./routes/dashboard');
-const predictRoute = require('./routes/predictRoute');
+const predictRoute = require('./routes/predictRoute'); // added
 
 const app = express();
 
-// ===== TRUST PROXY (Important for rate limiting behind proxies) =====
+// ===== TRUST PROXY =====
 app.set('trust proxy', 1);
 
 // ===== Security =====
@@ -21,14 +21,15 @@ app.use(helmet());
 
 // ===== Rate Limiting =====
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // max requests per IP
+  windowMs: 15 * 60 * 1000,
+  max: 100,
   message: 'Too many requests from this IP, please try again later.',
 });
 app.use(limiter);
 
 // ===== CORS =====
 const allowedOrigins = [
+  'http://localhost:3000', // your React dev server
   'http://localhost:8080',
   'https://super-duper-parakeet-97wvvrjjrx5vf6wg-8080.app.github.dev',
   'https://super-duper-parakeet-97wvvrjjrx5vf6wg-3000.app.github.dev',
@@ -36,10 +37,8 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function(origin, callback){
-    console.log('Origin:', origin); // Debug log
     if (!origin) return callback(null, true); // allow curl, mobile apps
     if (allowedOrigins.indexOf(origin) === -1) {
-      console.log('CORS blocked origin:', origin); // Debug log
       return callback(new Error('CORS policy does not allow this origin'), false);
     }
     return callback(null, true);
@@ -63,7 +62,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ai-crop-p
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/dashboard', dashboardRoutes);
-app.use('/api/predict', predictRoute);
+app.use('/api/predictRoute', predictRoute); // mounted predict route
 
 // ===== Health Check =====
 app.get('/api/health', (req, res) => {

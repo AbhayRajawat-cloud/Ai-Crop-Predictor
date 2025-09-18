@@ -151,7 +151,7 @@ const YieldPrediction: React.FC = () => {
         <div className="mt-4 p-4 bg-green-100 border border-green-300 rounded">
           <h3 className="font-bold text-lg">🌾 Prediction Result</h3>
           <p className="mt-2">
-            Predicted Yield: <strong>{prediction.toFixed(2)} units/hectare</strong>
+            Predicted Yield: <strong>{prediction.toFixed(2)} units/acres</strong>
           </p>
           <p className="text-sm text-gray-600 mt-2">
             Based on your inputs for {formData.Crop} in {formData.State} ({formData.Season} season)
