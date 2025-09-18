@@ -9,6 +9,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const dashboardRoutes = require('./routes/dashboard');
+const predictRoute = require('./routes/predictRoute');
 
 const app = express();
 
@@ -62,6 +63,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/ai-crop-p
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/predictRoute', predictRoute);
 
 // ===== Health Check =====
 app.get('/api/health', (req, res) => {
